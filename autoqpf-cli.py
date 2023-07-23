@@ -1,6 +1,5 @@
 import sys
 import argparse
-from typing import Union
 from pathlib import Path
 
 from auto_qpf.qpf_exceptions import (
@@ -9,7 +8,7 @@ from auto_qpf.qpf_exceptions import (
     NoChapterDataError,
 )
 
-from cli.utils import CustomHelpFormatter, FileParser
+from cli.utils import CustomHelpFormatter, FileParser, fps_type
 from cli._version import __version__, program_name
 from cli.process import process_args, create_stax_rip_directory
 from cli.exit import _exit_application, exit_fail, exit_success
@@ -44,7 +43,7 @@ def qpf_cli(dropped=False):
     parser.add_argument(
         "-f",
         "--fps",
-        type=Union[int, float],
+        type=fps_type,
         default=23.976,
         help="Define source file FPS.",
     )
@@ -69,7 +68,7 @@ def qpf_cli(dropped=False):
         setattr(args, "input", [dropped])
         if any(Path(i).is_dir() for i in [dropped]):
             setattr(args, "staxrip_batch", True)
-            
+
     # if not parse args like normally
     else:
         args = parser.parse_args()

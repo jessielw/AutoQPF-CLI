@@ -85,3 +85,13 @@ class FileParser:
             elif input_file.is_file():
                 file_s_list.append(input_file)
         return file_s_list
+
+
+def fps_type(value):
+    try:
+        return int(value)
+    except ValueError:
+        try:
+            return float(value)
+        except ValueError:
+            raise argparse.ArgumentTypeError("FPS must be a valid integer or float.")
