@@ -9,8 +9,6 @@ def create_stax_rip_directory(file_input: Path):
         Path(file_input).parent
         / Path(str(Path(file_input.name).with_suffix("")) + "_temp")
     )
-    # print("printing output directory")
-    # print(output_dir)
     output_dir.mkdir(exist_ok=True)
 
     # define file out for staxrip output
@@ -19,7 +17,5 @@ def create_stax_rip_directory(file_input: Path):
 
 
 def process_args(file_input, file_output, fps, auto_detect_fps):
-    # print(file_input)
-    # print(file_output)
     qpf = QpfGenerator().generate_qpf(file_input, file_output, fps, auto_detect_fps)
     return qpf
