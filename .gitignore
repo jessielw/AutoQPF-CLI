@@ -1,4 +1,5 @@
 .vscode/
 .venv/
+custom-pyinstaller/
 pyinstaller_build/
 *.pyc
