@@ -98,6 +98,9 @@ def qpf_cli(dropped=False):
                 file_output = Path(args.output)
             else:
                 file_output = Path(file_input).with_suffix(".qpf")
+            
+        # ensure directories are made
+        file_output.parent.mkdir(parents=True, exist_ok=True)
 
         try:
             process_arguments = process_args(
