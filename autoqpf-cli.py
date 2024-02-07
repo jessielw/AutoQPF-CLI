@@ -54,6 +54,13 @@ def qpf_cli(dropped=False):
         help="If used, will over ride any user fps input if the input file is a media file.",
     )
     parser.add_argument(
+        "-c",
+        "--chapter-chunks",
+        type=float,
+        default=5.0,
+        help="If chapters are generated, sets the percentage of total duration they will be created for.",
+    )    
+    parser.add_argument(
         "-o",
         "--output",
         type=str,
@@ -108,6 +115,7 @@ def qpf_cli(dropped=False):
                 file_output=file_output,
                 fps=args.fps,
                 auto_detect_fps=args.auto_fps,
+                chapter_chunks=args.chapter_chunks,
             )
             print(f"QPF Created: {process_arguments}")
             files_processed = files_processed + 1

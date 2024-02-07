@@ -16,6 +16,12 @@ def create_stax_rip_directory(file_input: Path):
     return file_output
 
 
-def process_args(file_input, file_output, fps, auto_detect_fps):
-    qpf = QpfGenerator().generate_qpf(file_input, file_output, fps, auto_detect_fps)
+def process_args(file_input, file_output, fps, auto_detect_fps, chapter_chunks):
+    qpf = QpfGenerator().generate_qpf(
+        file_input=file_input,
+        file_output=file_output,
+        fps=fps,
+        auto_detect_fps=auto_detect_fps,
+        generated_chapter_chunks=chapter_chunks,
+    )
     return qpf
